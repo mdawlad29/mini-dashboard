@@ -35,4 +35,5 @@ A modern, responsive, and interactive dashboard built with **Next.js 15**, **Tai
 ```bash
 git clone https://github.com/your-username/mini-dashboard.git
 cd mini-dashboard
+
 ```
