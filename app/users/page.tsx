@@ -4,9 +4,9 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { useFetch } from "@/hooks/useFetch";
 import { User } from "@/types";
-import { LoadingSpinner } from "@/components/LoadingSpinner";
-import { ErrorMessage } from "@/components/ErrorMessage";
-import { Modal } from "@/components/Modal";
+import { LoadingSpinner } from "@/shared/LoadingSpinner";
+import { ErrorMessage } from "@/shared/ErrorMessage";
+import { UserDetailsViewModal } from "@/modals/UserDetailsViewModal";
 import {
   EnvelopeIcon,
   PhoneIcon,
@@ -14,6 +14,7 @@ import {
   BuildingOfficeIcon,
   MapPinIcon,
 } from "@heroicons/react/24/outline";
+import { PageHeading } from "@/shared/PageHeading";
 
 export default function UsersPage() {
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
@@ -69,26 +70,11 @@ export default function UsersPage() {
 
   return (
     <div className="space-y-8">
-      <div className="flex justify-between items-center">
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-3xl font-bold text-gray-900"
-        >
-          Users list
-        </motion.h1>
-
-        <motion.button
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          onClick={handleShowError}
-          className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md transition-colors duration-200"
-        >
-          Demo Error
-        </motion.button>
-      </div>
+      <PageHeading
+        title="Users"
+        btnText="Demo Error"
+        onClick={handleShowError}
+      />
 
       {/* Desktop Table */}
       <motion.div
@@ -189,7 +175,7 @@ export default function UsersPage() {
       </div>
 
       {/* User Details Modal */}
-      <Modal
+      <UserDetailsViewModal
         isOpen={!!selectedUser}
         onClose={() => setSelectedUser(null)}
         title="User Details"
@@ -259,7 +245,7 @@ export default function UsersPage() {
             </div>
           </div>
         )}
-      </Modal>
+      </UserDetailsViewModal>
     </div>
   );
 }

@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import { ExclamationTriangleIcon } from '@heroicons/react/24/outline';
+import { motion } from "framer-motion";
+import { ExclamationTriangleIcon } from "@heroicons/react/24/outline";
 
 interface ErrorMessageProps {
   message: string;
@@ -23,10 +23,10 @@ export function ErrorMessage({ message, onRetry }: ErrorMessageProps) {
       >
         <ExclamationTriangleIcon className="h-12 w-12 text-red-500" />
       </motion.div>
-      
+
       <h3 className="text-lg font-medium text-red-900 mb-2">Error</h3>
       <p className="text-red-700 mb-4">{message}</p>
-      
+
       {onRetry && (
         <motion.button
           whileHover={{ scale: 1.05 }}

@@ -1,14 +1,14 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import Link from 'next/link';
-import { use } from 'react';
-import { useFetch } from '@/hooks/useFetch';
-import { Post, User } from '@/types';
-import { Card } from '@/components/Card';
-import { LoadingSpinner } from '@/components/LoadingSpinner';
-import { ErrorMessage } from '@/components/ErrorMessage';
-import { ArrowLeftIcon, UserIcon } from '@heroicons/react/24/outline';
+import { motion } from "framer-motion";
+import Link from "next/link";
+import { use } from "react";
+import { useFetch } from "@/hooks/useFetch";
+import { Post, User } from "@/types";
+import { Card } from "@/shared/Card";
+import { LoadingSpinner } from "@/shared/LoadingSpinner";
+import { ErrorMessage } from "@/shared/ErrorMessage";
+import { ArrowLeftIcon, UserIcon } from "@heroicons/react/24/outline";
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -16,11 +16,13 @@ interface PageProps {
 
 export default function PostDetailPage({ params }: PageProps) {
   const { id } = use(params);
-  
-  const { data: post, loading: postLoading, error: postError } = useFetch<Post>(
-    `https://jsonplaceholder.typicode.com/posts/${id}`
-  );
-  
+
+  const {
+    data: post,
+    loading: postLoading,
+    error: postError,
+  } = useFetch<Post>(`https://jsonplaceholder.typicode.com/posts/${id}`);
+
   const { data: user, loading: userLoading } = useFetch<User>(
     post ? `https://jsonplaceholder.typicode.com/users/${post.userId}` : null
   );
@@ -63,7 +65,7 @@ export default function PostDetailPage({ params }: PageProps) {
 
       {/* Post content */}
       <Card delay={0.1}>
-        <motion.h1 
+        <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
@@ -71,7 +73,7 @@ export default function PostDetailPage({ params }: PageProps) {
         >
           {post.title}
         </motion.h1>
-        
+
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -81,7 +83,7 @@ export default function PostDetailPage({ params }: PageProps) {
           <p className="text-gray-700 leading-relaxed">{post.body}</p>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
@@ -99,7 +101,7 @@ export default function PostDetailPage({ params }: PageProps) {
       {/* Author info */}
       {user && (
         <Card delay={0.5}>
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6 }}
@@ -107,7 +109,7 @@ export default function PostDetailPage({ params }: PageProps) {
           >
             About the Author
           </motion.h2>
-          
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

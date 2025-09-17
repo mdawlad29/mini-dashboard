@@ -11,7 +11,12 @@ interface ModalProps {
   title?: string;
 }
 
-export function Modal({ isOpen, onClose, children, title }: ModalProps) {
+export function UserDetailsViewModal({
+  isOpen,
+  onClose,
+  children,
+  title,
+}: ModalProps) {
   return (
     <AnimatePresence>
       {isOpen && (

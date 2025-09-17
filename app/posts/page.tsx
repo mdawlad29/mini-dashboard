@@ -5,9 +5,10 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { useFetch } from "@/hooks/useFetch";
 import { Post } from "@/types";
-import { Card } from "@/components/Card";
-import { LoadingSpinner, CardSkeleton } from "@/components/LoadingSpinner";
-import { ErrorMessage } from "@/components/ErrorMessage";
+import { Card } from "@/shared/Card";
+import { LoadingSpinner, CardSkeleton } from "@/shared/LoadingSpinner";
+import { ErrorMessage } from "@/shared/ErrorMessage";
+import { PageHeading } from "@/shared/PageHeading";
 
 export default function PostsPage() {
   const [showError, setShowError] = useState(false);
@@ -67,26 +68,11 @@ export default function PostsPage() {
 
   return (
     <div className="space-y-8">
-      <div className="flex justify-between items-center">
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-3xl font-bold text-gray-900"
-        >
-          All posts
-        </motion.h1>
-
-        <motion.button
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          onClick={handleShowError}
-          className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md transition-colors duration-200"
-        >
-          Demo Error
-        </motion.button>
-      </div>
+      <PageHeading
+        onClick={handleShowError}
+        title="All Posts"
+        btnText="Demo Error"
+      />
 
       <motion.div
         initial={{ opacity: 0 }}

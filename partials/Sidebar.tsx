@@ -8,7 +8,8 @@ import {
   HomeIcon,
   DocumentTextIcon,
   UserGroupIcon,
-  Bars3Icon,
+  ChevronRightIcon,
+  ChevronLeftIcon,
 } from "@heroicons/react/24/outline";
 
 const navigation = [
@@ -34,9 +35,13 @@ export function Sidebar() {
         )}
         <button
           onClick={() => setCollapsed(!collapsed)}
-          className="bg-white p-1 rounded-md shadow border border-gray-200"
+          className="bg-white p-1 rounded-md shadow border border-gray-200 flex items-center justify-center"
         >
-          <Bars3Icon className="h-6 w-6 text-gray-600" />
+          {collapsed ? (
+            <ChevronRightIcon className="size-5 font-bold text-gray-600" />
+          ) : (
+            <ChevronLeftIcon className="size-5 font-bold text-gray-600" />
+          )}
         </button>
       </div>
 

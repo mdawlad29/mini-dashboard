@@ -1,6 +1,6 @@
 "use client";
 
-import { Sidebar } from "@/components/Sidebar";
+import { Sidebar } from "@/partials/Sidebar";
 import { usePathname } from "next/navigation";
 
 export const LayoutSection = ({ children }: { children: React.ReactNode }) => {
