@@ -37,9 +37,6 @@ export default function PostsPage() {
   if (loading) {
     return (
       <div className="space-y-8">
-        <div className="flex justify-between items-center">
-          <h1 className="text-3xl font-bold text-gray-900">Posts</h1>
-        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {Array.from({ length: 6 }).map((_, index) => (
             <CardSkeleton key={index} />
@@ -53,7 +50,7 @@ export default function PostsPage() {
     return (
       <div className="space-y-8">
         <div className="flex justify-between items-center">
-          <h1 className="text-3xl font-bold text-gray-900">Posts</h1>
+          <h1 className="text-3xl font-bold text-gray-900">All posts</h1>
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}

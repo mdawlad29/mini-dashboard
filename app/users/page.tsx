@@ -37,7 +37,6 @@ export default function UsersPage() {
   if (loading) {
     return (
       <div className="space-y-8">
-        <h1 className="text-3xl font-bold text-gray-900">Users</h1>
         <LoadingSpinner />
       </div>
     );
@@ -65,7 +64,7 @@ export default function UsersPage() {
   return (
     <div className="space-y-8">
       <PageHeading
-        title="Users"
+        title="Users List"
         btnText="Demo Error"
         onClick={handleShowError}
       />
