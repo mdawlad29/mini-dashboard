@@ -1,21 +1,28 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { XMarkIcon } from "@heroicons/react/24/outline";
-import { ReactNode } from "react";
+import {
+  EnvelopeIcon,
+  PhoneIcon,
+  GlobeAltIcon,
+  BuildingOfficeIcon,
+  MapPinIcon,
+  XMarkIcon,
+} from "@heroicons/react/24/outline";
+import { User } from "@/types";
 
 interface ModalProps {
+  title?: string;
   isOpen: boolean;
   onClose: () => void;
-  children: ReactNode;
-  title?: string;
+  selectedUser: User | null;
 }
 
 export function UserDetailsViewModal({
+  title,
   isOpen,
   onClose,
-  children,
-  title,
+  selectedUser,
 }: ModalProps) {
   return (
     <AnimatePresence>
@@ -47,7 +54,75 @@ export function UserDetailsViewModal({
                         {title}
                       </h3>
                     )}
-                    {children}
+
+                    {selectedUser && (
+                      <div className="space-y-4">
+                        <div className="flex items-center space-x-4">
+                          <div className="h-12 w-12 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center text-white text-xl font-medium">
+                            {selectedUser.name.charAt(0)}
+                          </div>
+                          <div>
+                            <h3 className="text-lg font-medium text-gray-900">
+                              {selectedUser.name}
+                            </h3>
+                            <p className="text-gray-500">
+                              @{selectedUser.username}
+                            </p>
+                          </div>
+                        </div>
+
+                        <div className="space-y-3">
+                          <div className="flex items-center space-x-3">
+                            <EnvelopeIcon className="h-5 w-5 text-gray-400" />
+                            <span className="text-sm text-gray-600">
+                              {selectedUser.email}
+                            </span>
+                          </div>
+
+                          <div className="flex items-center space-x-3">
+                            <PhoneIcon className="h-5 w-5 text-gray-400" />
+                            <span className="text-sm text-gray-600">
+                              {selectedUser.phone}
+                            </span>
+                          </div>
+
+                          {selectedUser.website && (
+                            <div className="flex items-center space-x-3">
+                              <GlobeAltIcon className="h-5 w-5 text-gray-400" />
+                              <a
+                                href={`https://${selectedUser.website}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-sm text-blue-600 hover:text-blue-800"
+                              >
+                                {selectedUser.website}
+                              </a>
+                            </div>
+                          )}
+
+                          <div className="flex items-center space-x-3">
+                            <BuildingOfficeIcon className="h-5 w-5 text-gray-400" />
+                            <div>
+                              <div className="text-sm text-gray-600">
+                                {selectedUser.company.name}
+                              </div>
+                              <div className="text-xs text-gray-500 italic">
+                                "{selectedUser.company.catchPhrase}"
+                              </div>
+                            </div>
+                          </div>
+
+                          <div className="flex items-center space-x-3">
+                            <MapPinIcon className="h-5 w-5 text-gray-400" />
+                            <span className="text-sm text-gray-600">
+                              {selectedUser.address.street},{" "}
+                              {selectedUser.address.suite},{" "}
+                              {selectedUser.address.city}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    )}
                   </div>
 
                   <motion.button
