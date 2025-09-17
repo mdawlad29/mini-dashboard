@@ -129,7 +129,7 @@ export function UserDetailsViewModal({
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     onClick={onClose}
-                    className="ml-4 rounded-md bg-white/70 text-gray-500 hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                    className="ml-4 rounded-md bg-white/70 text-gray-500 hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 cursor-pointer"
                   >
                     <span className="sr-only">Close</span>
                     <XMarkIcon className="h-6 w-6" />

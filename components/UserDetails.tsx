@@ -16,7 +16,7 @@ const UserDetails = ({
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
-        className="hidden md:block bg-white rounded-lg shadow overflow-hidden"
+        className="hidden lg:block bg-white rounded-lg shadow overflow-hidden"
       >
         <table className="min-w-full divide-y divide-gray-200">
           <thead className="bg-gray-50">
@@ -47,8 +47,8 @@ const UserDetails = ({
               >
                 <td className="px-6 py-4 whitespace-nowrap">
                   <div className="flex items-center">
-                    <div className="h-10 w-10 flex-shrink-0">
-                      <div className="h-10 w-10 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center text-white font-medium">
+                    <div className="size-9 flex-shrink-0">
+                      <div className="size-9 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center text-white font-medium">
                         {user.name.charAt(0)}
                       </div>
                     </div>
@@ -74,7 +74,7 @@ const UserDetails = ({
                   </div>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                  <button className="text-blue-600 hover:text-blue-900">
+                  <button className="text-blue-600 hover:text-blue-900 cursor-pointer hover:underline">
                     View Details
                   </button>
                 </td>
@@ -85,7 +85,7 @@ const UserDetails = ({
       </motion.div>
 
       {/* Mobile Cards */}
-      <div className="md:hidden space-y-4">
+      <div className="lg:hidden space-y-4">
         {users?.map((user, index) => (
           <motion.div
             key={user.id}
@@ -96,9 +96,10 @@ const UserDetails = ({
             className="bg-white rounded-lg shadow p-4 cursor-pointer hover:shadow-md transition-shadow duration-200"
           >
             <div className="flex items-center space-x-3">
-              <div className="h-12 w-12 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center text-white font-medium">
+              <div className="size-10 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center text-white font-medium">
                 {user.name.charAt(0)}
               </div>
+
               <div className="flex-1">
                 <h3 className="font-medium text-gray-900">{user.name}</h3>
                 <p className="text-sm text-gray-500">{user.email}</p>

@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 export const LayoutSection = ({ children }: { children: React.ReactNode }) => {
   const pathname = usePathname();
   return (
-    <div className="flex h-screen overflow-hidden">
+    <div className="flex h-screen overflow-x-hidden">
       <Sidebar />
 
       {/* Main content wrapper */}
